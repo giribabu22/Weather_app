@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'report.dart';
 
 class InputPage extends StatefulWidget {
+  InputPage({Key? key}) : super(key: key);
+  TextEditingController controller = TextEditingController();
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -21,7 +24,7 @@ class _InputPageState extends State<InputPage> {
           children: [
             TextField(
               controller: controller,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Enter city name: ',
               ),
             ),

@@ -20,7 +20,7 @@ class AboutToday extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Icon(icon, size: 50, color: Colors.white60,),
+              Icon(icon, size: 50, color: Colors.black87,),
               const SizedBox(height: 10,),
               Text(title, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),),
               const SizedBox(height: 10,),

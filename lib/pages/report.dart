@@ -13,10 +13,6 @@ class WeatherReport extends StatefulWidget{
 }
 
 class _WeatherReportState extends State<WeatherReport>{
-  
-  
-  
-  // 
   late Future<Map<String,dynamic>?> weather;
   
   Future <Map<String,dynamic>?> gettingDataWeather() async {
