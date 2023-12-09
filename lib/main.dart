@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-// import './pages/report.dart';
 import 'pages/search.dart';
 
 void main(){
