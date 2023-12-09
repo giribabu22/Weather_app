@@ -4,21 +4,20 @@ import 'package:flutter/material.dart';
 import '../services/about_today.dart';
 import '../services/report_hourly.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv;
 
 class WeatherReport extends StatefulWidget{
-  const WeatherReport({super.key});
+  final String city;
+  const WeatherReport({Key? key, required this.city}) : super(key: key);
   @override
   State<WeatherReport> createState() => _WeatherReportState();
 }
 
-class _WeatherReportState extends State<WeatherReport>{
+class _WeatherReportState extends State<WeatherReport> {
   late Future<Map<String,dynamic>?> weather;
-  
+
   Future <Map<String,dynamic>?> gettingDataWeather() async {
     try{
-      const cityName = 'Delhi';
-      final url = "https://api.openweathermap.org/data/2.5/forecast?q=$cityName&appid=${dotenv.env['API_KEY']}";      
+      final url = "https://api.openweathermap.org/data/2.5/forecast?q=${widget.city}&appid=12e9e6c099e2cbfe4280af59ce7dcd86";      
       final response = await  http.get(Uri.parse(url));
       final data = jsonDecode(response.body);
       if (data['cod'] != '200') {
@@ -33,7 +32,7 @@ class _WeatherReportState extends State<WeatherReport>{
   @override
   void initState() {
     super.initState();
-    weather = gettingDataWeather();
+    // weather = gettingDataWeather();
   }
   
   @override
@@ -53,7 +52,7 @@ class _WeatherReportState extends State<WeatherReport>{
         ],
       ),
       body: FutureBuilder(
-        future: weather, 
+        future: gettingDataWeather(), 
         builder: ( context, snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator.adaptive(),);
